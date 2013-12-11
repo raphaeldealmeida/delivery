@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -11,23 +12,24 @@ namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Application\Model\Produto;
+use Application\Model\ProdutoTable;
+use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\TableGateway\TableGateway;
 
-class Module
-{
-    public function onBootstrap(MvcEvent $e)
-    {
-        $eventManager        = $e->getApplication()->getEventManager();
+class Module {
+
+    public function onBootstrap(MvcEvent $e) {
+        $eventManager = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
     }
 
-    public function getConfig()
-    {
+    public function getConfig() {
         return include __DIR__ . '/config/module.config.php';
     }
 
-    public function getAutoloaderConfig()
-    {
+    public function getAutoloaderConfig() {
         return array(
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
@@ -36,4 +38,29 @@ class Module
             ),
         );
     }
+
+    public function getServiceConfig() {
+        return array(
+            
+            //Inicializa o ProdutoTable        
+            'factories' => array(
+                'Application\Model\ProdutoTable' => function($sm) {
+                    $tableGateway = $sm->get('ProdutoTableGateway');
+                    $table = new ProdutoTable($tableGateway);
+                    return $table;
+                },
+                        
+                //Inicializa o TableGateway        
+                'ProdutoTableGateway' => function ($sm) {
+                    
+                    // Carrega as configurações usando AdapterServiceFactory
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter'); 
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Produto());
+                    return new TableGateway('produtos', $dbAdapter, null, $resultSetPrototype);
+                },
+            ),
+        );
+    }
+
 }

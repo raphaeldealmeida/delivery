@@ -20,6 +20,22 @@ return array(
                     ),
                 ),
             ),
+            
+            //Rota criada para o produto
+            'produto' => array(
+                 'type'    => 'segment',
+                 'options' => array(
+                     'route'    => '/produto[/][:action][/:id]',
+                     'constraints' => array(
+                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                         'id'     => '[0-9]+',
+                     ),
+                     'defaults' => array(
+                         'controller' => 'Application\Controller\Produto',
+                         'action'     => 'index',
+                     ),
+                 ),
+             ),
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
@@ -74,7 +90,7 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
-            'Application\Controller\Info' => 'Application\Controller\InfoController'
+            'Application\Controller\Produto' => 'Application\Controller\ProdutoController'
         ),
     ),
     'view_manager' => array(
