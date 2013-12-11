@@ -119,11 +119,12 @@ class Produto {
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
                 ),
-                'validators' => array(
-                    array(
-                        'name' => 'Float',
-                    ),
-                ),
+// depende da extensão PHP intl 
+//                'validators' => array(
+//                    array(
+//                        'name' => 'Float',
+//                    ),
+//                ),
             ));
 
             $inputFilter->add(array(
