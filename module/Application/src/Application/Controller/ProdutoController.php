@@ -9,6 +9,10 @@ use Application\Form\ProdutoForm;
 
 class ProdutoController extends AbstractActionController {
 
+    /**
+     *
+     * @var Application\Model\ProdutoTable
+     */
     protected $produtoTable;
 
     public function indexAction() {

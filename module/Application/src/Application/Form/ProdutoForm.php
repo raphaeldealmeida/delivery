@@ -18,7 +18,7 @@ namespace Application\Form;
          
          $this->add(array(
              'name' => 'nome',
-             'type' => 'Text',
+             'type' => 'Text', //new \Zend\Form\Element\Text()
              'options' => array(
                  'label' => 'Nome',
              ),
@@ -42,7 +42,7 @@ namespace Application\Form;
          
          $this->add(array(
              'name' => 'disponivel',
-             'type' => 'Checkbox',
+             'type' => 'Checkbox', //new \Zend\Form\Element\Checkbox
              'options' => array(
                  'label' => 'Disponível',
                  'checked_value' => true,

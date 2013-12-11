@@ -70,7 +70,7 @@ class Produto {
                 'name' => 'id',
                 'required' => true,
                 'filters' => array(
-                    array('name' => 'Int'),
+                    array('name' => 'Int'), //new Zend\Filter\Int
                 ),
             ));
 
@@ -78,16 +78,16 @@ class Produto {
                 'name' => 'nome',
                 'required' => true,
                 'filters' => array(
-                    array('name' => 'StripTags'),
-                    array('name' => 'StringTrim'),
+                    array('name' => 'StripTags'),  // new Zend\Filter\StripTags
+                    array('name' => 'StringTrim'), //new Zend\Filter\StringTrim
                 ),
                 'validators' => array(
                     array(
-                        'name' => 'StringLength',
+                        'name' => 'StringLength',  //new Zend\Validator\StringLength
                         'options' => array(
                             'encoding' => 'UTF-8',
                             'min' => 1,
-                            'max' => 100,
+                            'max' => 100, 
                         ),
                     ),
                 ),
@@ -106,7 +106,7 @@ class Produto {
                         'options' => array(
                             'encoding' => 'UTF-8',
                             'min' => 1,
-                            'max' => 100,
+                            'max' => 400,
                         ),
                     ),
                 ),
@@ -118,7 +118,7 @@ class Produto {
                 'filters' => array(
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
-                ),
+                ), 
 // depende da extensão PHP intl 
 //                'validators' => array(
 //                    array(
