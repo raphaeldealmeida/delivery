@@ -5,19 +5,36 @@ namespace Delivery\Entity;
 use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface;
-use Doctrine\ORM\Mapping\Annotation as ORM;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @Entity
- * 
+ * @ORM\Entity
+ * @ORM\Table(name="produtos")
  */
 class Produto {
 
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     */
     protected $id;
+
+    /**
+     * @ORM\Column
+     */
     protected $nome;
+    
+    /**
+     * @ORM\Column
+     */
     protected $descricao;
+    
     protected $valor = 0.00;
+    
     protected $disponivel = true;
+    
+    
+    
     protected $inputFilter;
 
     /**

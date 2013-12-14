@@ -18,6 +18,9 @@ class ProdutoController extends AbstractActionController{
                          ->findAll();
         
         return array('produtos' => $produtos);
+//        return new \Zend\View\Model\ViewModel(
+//                array('produtos' => $produtos)
+//                );
     }
     
     public function getEntityManager() {
