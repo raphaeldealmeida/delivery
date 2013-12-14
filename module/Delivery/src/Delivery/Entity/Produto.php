@@ -15,6 +15,7 @@ class Produto {
 
     /**
      * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
      */
     protected $id;
@@ -29,11 +30,15 @@ class Produto {
      */
     protected $descricao;
     
+    /**
+     * @ORM\Column(type="float", precision=2)
+     */
     protected $valor = 0.00;
     
-    protected $disponivel = true;
-    
-    
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $disponivel = 1;
     
     protected $inputFilter;
 
@@ -47,7 +52,7 @@ class Produto {
         $this->nome = (!empty($data['nome'])) ? $data['nome'] : null;
         $this->descricao = (!empty($data['descricao'])) ? $data['descricao'] : null;
         $this->valor = (!empty($data['valor'])) ? $data['valor'] : 0.00;
-        $this->disponivel = (!empty($data['disponivel'])) ? $data['disponivel'] : true;
+        $this->disponivel = (!empty($data['disponivel'])) ? $data['disponivel'] : 1;
     }
 
     /**
@@ -72,7 +77,7 @@ class Produto {
     }
 
     public function getValor() {
-        return $this->valor;
+        return number_format($this->valor, 2);
     }
 
     public function getDisponivel() {
