@@ -1,0 +1,16 @@
+<?php
+ $title = 'Login';
+ $this->headTitle($title);
+ ?>
+ <h1><?= $this->escapeHtml($title); ?></h1>
+<?
+
+$loginForm->prepare();
+
+// Imprime o formulário
+echo $this->form()->openTag($loginForm);
+
+//Imprime todos elements
+echo $this->formCollection($loginForm);
+
+echo $this->form()->closeTag();

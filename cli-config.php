@@ -12,13 +12,11 @@ $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/module/De
 // database configuration parameters
 $conn = array(
     'driver' => 'pdo_mysql',
-                'params' => array(
-                    'host'     => 'localhost',
-                    'port'     => '3306',
-                    'user'     => 'root',
-                    'password' => '',
-                    'dbname'   => 'delivery',
-                )
+                'host'     => 'localhost',
+                'port'     => '3306',
+                'user'     => 'root',
+                'password' => '',
+                'dbname'   => 'delivery',
 );
 
 // obtaining the entity manager

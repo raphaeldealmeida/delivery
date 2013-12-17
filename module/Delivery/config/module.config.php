@@ -62,7 +62,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Delivery\Controller\Produto' => 'Delivery\Controller\ProdutoController'
+            'Delivery\Controller\Produto' => 'Delivery\Controller\ProdutoController',
+            'Delivery\Controller\Session' => 'Delivery\Controller\SessionController'
         ),
     ),
     
@@ -104,7 +105,15 @@ return array(
                     __NAMESPACE__ => 'my_annotation_driver'
                 )
             )
-        )
+        ),
+        // Autenticação com doctrine
+        'authentication' => array(
+            'orm_default' => array(
+                'object_manager' => 'Doctrine\ORM\EntityManager',
+                'identity_class' => 'Delivery\Entity\Usuario',
+                'identity_property' => 'login',
+                'credential_property' => 'senha',
+            ),
+        ),
     )
-    
 );
