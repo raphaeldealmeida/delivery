@@ -5,6 +5,7 @@ namespace Delivery\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Delivery\Form\LoginForm;
 use Zend\View\Model\ViewModel;
+use \Zend\Form\Annotation\AnnotationBuilder;
 
 class SessionController extends AbstractActionController {
 
@@ -38,7 +39,7 @@ class SessionController extends AbstractActionController {
                     return $this->redirect()->toRoute('home');
                 }else{
                     $this->flashMessenger()
-                            ->add('Usuário ou senha incorreto.');
+                            ->addMessage('Usuário ou senha incorreto.');
                 }
             //}
         }
@@ -48,4 +49,32 @@ class SessionController extends AbstractActionController {
         ));
         
     }
+    
+    public function criarUsuarioAction(){
+        $usuario = new \Delivery\Entity\Usuario();
+        $builder = new AnnotationBuilder();
+        $form = $builder->createForm($usuario);
+        $form->add(array(
+             'name' => 'submit',
+             'type' => 'Submit',
+             'attributes' => array(
+                 'value' => 'Enviar',
+                 'id' => 'submitbutton',
+                 'class' => 'btn btn-primary'
+             ),
+         ));
+        
+        return array('form' => $form);
+        
+    }
+    
+    public function logoutAction(){
+         $this->authService = $this->getServiceLocator()
+                        ->get('Zend\Authentication\AuthenticationService');
+         $this->authService->clearIdentity();
+         $this->flashMessenger()
+                            ->addMessage('Logout.');
+         return $this->redirect()->toRoute('home');
+    }
+    
 }

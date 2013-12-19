@@ -1,0 +1,22 @@
+<?php
+$title = 'Excluir Produto';
+ $this->headTitle($title);
+ ?>
+ <h1><?= $this->escapeHtml($title); ?></h1>
+
+ <p>Confirma a exclusão do produto
+     '<?= $this->escapeHtml($produto->getNome()); ?>'?
+ </p>
+ <?php
+ $url = $this->url('produto', array(
+     'action' => 'delete',
+     'id'     => $this->id,
+ ));
+ ?>
+ <form action="<?= $url; ?>" method="post">
+ <div>
+     <input type="hidden" name="id" value="<?= (int) $produto->getId(); ?>" />
+     <input type="submit" name="del" value="Yes" />
+     <input type="submit" name="del" value="No" />
+ </div>
+ </form>

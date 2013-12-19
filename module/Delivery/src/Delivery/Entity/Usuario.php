@@ -3,12 +3,14 @@
 namespace Delivery\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Zend\Form\Annotation;
 
 /**
  * Usuarios
  *
  * @ORM\Table(name="usuarios")
  * @ORM\Entity
+ * @Annotation\Name("usuario")
  */
 class Usuario
 {
@@ -18,6 +20,7 @@ class Usuario
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Annotation\Attributes({"type":"hidden"})
      */
     private $id;
 
@@ -25,6 +28,8 @@ class Usuario
      * @var string
      *
      * @ORM\Column(name="login", type="string", length=100, nullable=false)
+     * @Annotation\Attributes({"type":"text"})
+     * @Annotation\Options({"label":"Login:"})
      */
     private $login;
 
@@ -32,6 +37,9 @@ class Usuario
      * @var string
      *
      * @ORM\Column(name="senha", type="string", length=100, nullable=false)
+     * @Annotation\Attributes({"type":"password"})
+     * @Annotation\Options({"label":"Senha:"})
+     * 
      */
     private $senha;
 
@@ -39,6 +47,8 @@ class Usuario
      * @var string
      *
      * @ORM\Column(name="nome", type="string", length=100, nullable=true)
+     * @Annotation\Attributes({"type":"text"})
+     * @Annotation\Options({"label":"Nome:"})
      */
     private $nome;
 
@@ -46,6 +56,8 @@ class Usuario
      * @var string
      *
      * @ORM\Column(name="cpf", type="string", length=11, nullable=true)
+     * @Annotation\Attributes({"type":"text"})
+     * @Annotation\Options({"label":"CPF:"})
      */
     private $cpf;
 
@@ -53,6 +65,8 @@ class Usuario
      * @var string
      *
      * @ORM\Column(name="telefone", type="string", length=20, nullable=true)
+     * @Annotation\Attributes({"type":"text"})
+     * @Annotation\Options({"label":"Telefone:"})
      */
     private $telefone;
 
@@ -60,6 +74,7 @@ class Usuario
      * @var boolean
      *
      * @ORM\Column(name="habilitado", type="boolean", nullable=true)
+     * @Annotation\Exclude()
      */
     private $habilitado;
 
@@ -67,6 +82,7 @@ class Usuario
      * @var string
      *
      * @ORM\Column(name="tipo", type="string", length=10, nullable=true)
+     * @Annotation\Exclude()
      */
     private $tipo;
 

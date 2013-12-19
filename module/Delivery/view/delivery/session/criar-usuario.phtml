@@ -1,0 +1,16 @@
+<?php
+ $title = 'Criar Usuário';
+ $this->headTitle($title);
+ ?>
+ <h1><?= $this->escapeHtml($title); ?></h1>
+<?php
+
+$form->prepare();
+
+// Imprime o formulário
+echo $this->form()->openTag($form);
+
+//Imprime todos elements
+echo $this->formCollection($form);
+
+echo $this->form()->closeTag();

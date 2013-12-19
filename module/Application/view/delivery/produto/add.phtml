@@ -1,0 +1,25 @@
+<?php
+ 
+ $title = 'Inserir novo produto';
+ $this->headTitle($title);
+ ?>
+ <h1><?= $this->escapeHtml($title); ?></h1>
+ <?php
+ $form->setAttribute('action', 
+         $this->url('produto', 
+                 array('action' => 'add')));
+ $form->prepare();
+
+ 
+ // Imprime o formulário
+ echo $this->form()->openTag($form);
+ echo $this->formHidden($form->get('id'));
+ echo $this->formRow($form->get('nome'));
+ //$nome = $form->get('nome');
+ //echo $nome->getLabel();
+ 
+ echo $this->formRow($form->get('descricao'));
+ echo $this->formRow($form->get('valor'));
+ echo $this->formRow($form->get('disponivel'));
+ echo $this->formSubmit($form->get('submit'));
+ echo $this->form()->closeTag();
