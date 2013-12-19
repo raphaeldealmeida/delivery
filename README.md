@@ -1,3 +1,6 @@
+Referencia ZF2
+http://zf2.readthedocs.org/en/latest/
+
 ZendSkeletonApplication
 =======================
 

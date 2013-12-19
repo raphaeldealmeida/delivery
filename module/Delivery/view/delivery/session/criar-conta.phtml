@@ -1,0 +1,16 @@
+<?php
+ $title = 'Criar conta';
+ $this->headTitle($title);
+ ?>
+ <h1><?= $this->escapeHtml($title); ?></h1>
+<?
+
+$form->prepare();
+
+// Imprime o formulário
+echo $this->form()->openTag($form);
+
+//Imprime todos elements
+echo $this->formCollection($form);
+
+echo $this->form()->closeTag();

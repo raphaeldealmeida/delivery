@@ -16,6 +16,46 @@ return array(
                     ),
                 ),
             ),
+            
+            'login' => array( // apelido para chamar a rota no helper $this->url()
+                'type' => 'Zend\Mvc\Router\Http\Literal', //Rola literal           
+                'options' => array(
+                    'route' => '/login', // O que deve ser digitado na url
+                    'defaults' => array(
+                        //Controller chamado
+                        'controller' => 'Delivery\Controller\Session', 
+                        //Action chamada
+                        'action' => 'login',
+                    ),
+                ),
+            ),
+            
+            'logoff' => array( // apelido para chamar a rota no helper
+                'type' => 'Zend\Mvc\Router\Http\Literal', //Rola literal           
+                'options' => array(
+                    'route' => '/logoff', // O que deve ser digitado na url
+                    'defaults' => array(
+                        //Controller chamado
+                        'controller' => 'Delivery\Controller\Session', 
+                        //Action chamada
+                        'action' => 'logoff',
+                    ),
+                ),
+            ),
+            
+            'criar' => array( // apelido para chamar a rota no helper
+                'type' => 'Zend\Mvc\Router\Http\Literal', //Rola literal           
+                'options' => array(
+                    'route' => '/nova-conta', // O que deve ser digitado na url
+                    'defaults' => array(
+                        //Controller chamado
+                        'controller' => 'Delivery\Controller\Session', 
+                        //Action chamada
+                        'action' => 'criarConta',
+                    ),
+                ),
+            ),
+            
             //Rota criada para o produto
             'produto' => array(
                 'type' => 'segment',
